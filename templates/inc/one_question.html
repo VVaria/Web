@@ -1,0 +1,67 @@
+{% load static %}
+<link rel="shortcut icon" href="one-question.html#">
+<link href="{% static "/css/style-206.css" %}" rel="stylesheet">
+<link href="{% static "/font-awesome-4.7.0/css/font-awesome.min.css" %}" rel="stylesheet">
+
+<div class="ui-206">
+    <div class="">
+        <div class="ui-outer">
+            <div class="media mt-3">
+                <div class="col-md-2 col-sm-2 col-xs-2 col-pad">
+                    <!-- Logo -->
+                    <div class="ui-logo">
+                        <img src="{% static "/img/avatar.jpg" %}" width="100px" height="100px" alt=""
+                        class="img-responsive"/>
+                    </div>
+
+                    <div class="ui-content">
+                        <div class="media-heading">
+                            <b class="author">{{question.member}}</b>
+                            <div class="metadata">
+                                <span class="date">{{question.time}}</span>
+                            </div>
+                        </div>
+                        <a href="#">
+                            <i class="fa fa-thumbs-o-up text-success"></i>
+                        </a>
+                        <b>5</b>&nbsp;
+                        <a href="#">
+                            <i class="fa fa-thumbs-o-down text-danger"></i>
+                        </a>
+                        <b>5</b>&nbsp;
+                    </div>
+                </div>
+                <div class="col-md-9 col-sm-9 col-xs-9 col-pad">
+                    <!-- Content -->
+                    <div class="ui-content">
+                        <!-- Heading -->
+                        <h4><a href="{% url 'question' pk=question.id %}">{{ question.title }}</a></h4>
+                        <!-- Paragraph -->
+                        {% if style == True%}
+                        {% if question.text|length > 100 %}
+                        <p class="overflow-hidden" style="max-height: 110px">{{ question.text }}</p>
+                        <a href="{% url 'question' pk=question.id %}">...<br></a>
+                        {% else %}
+                        <p class="overflow-hidden" style="max-height: 50px">{{ question.text }}</p>
+                        {% endif %}
+                        {% else %}
+                        <p>{{ question.text }}</p>
+                        {% endif %}
+                        <!-- Success -->
+                        <div class="fixed-sticky">
+                            <a href="{% url 'question' pk=question.id %}">
+                                answers(3)
+                            </a>&nbsp;
+                            <!-- Ends -->
+                            <a>Tags:
+                                {%for tag in question.tags%}
+                                <a href="{% url 'tag' tag=tag %}">{{ tag }}</a>
+                                {%endfor%}
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,23 @@
+{% load static %}
+<div class="row">
+    <legend>Popular tags</legend>
+    <div class="row elements-page-btn mt-3">
+        <div class="col-md-8 col-sm-8 mblank-4 text-space-between mb-5">
+            {%for tag in tags%}
+            <a href="{% url 'tag' tag=tag%}"
+               class="badge badge-pill my-2 mx-2 {% cycle 'badge-primary' 'badge-success' 'badge-danger' 'badge-warning' 'badge-info' %} ">
+                <h5 class="text-white">{{tag}}</h5>
+            </a>
+            {%endfor%}
+
+        </div>
+    </div>
+</div>
+<div class="row">
+    <legend>Best members</legend>
+    <div class="column">
+        {%for mem in members%}
+        <a class="h3" href="#">{{ mem }} <br></a>
+        {%endfor%}
+    </div>
+</div>

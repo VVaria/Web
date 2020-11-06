@@ -1,0 +1,40 @@
+{% extends 'inc/base.html' %}
+{% load static %}
+
+{% block content%}
+<label class="h4">New question</label>
+
+<div class="ui-206">
+    <div class="ui-outer">
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="title">Title</span>
+            </div>
+            <input type="text" class="form-control" id="title-input" aria-describedby="title">
+        </div>
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text">Text</span>
+            </div>
+            <textarea class="form-control question-text" aria-label="Text"></textarea>
+        </div>
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="tags">Tags</span>
+            </div>
+            <input type="text" class="form-control" id="tags-input" aria-describedby="tags">
+        </div>
+        <div class="add-ask-button">
+            <div class="nav-item ask action-buttons">
+                <a href="#" class="btn btn-primary sign-up-btn">Ask</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content%}
+
+{% block right%}
+<div class="ui-content">
+{% include 'inc/right_column.html' %}
+    </div>
+{% endblock right%}

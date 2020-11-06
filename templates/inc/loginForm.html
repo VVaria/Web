@@ -1,0 +1,28 @@
+{% load static %}
+<link href="{% static "/css/login_page.css" %}" rel="stylesheet">
+<div class="container loginForm">
+    <h1>Login</h1>
+    <form>
+        <div class="form-group has-feedback">
+            <input type="text" class="form-control form-input" placeholder="" required>
+            <label class="form-label">login</label>
+            <span class="glyphicon form-control-feedback"></span>
+        </div>
+        <div class="form-group has-feedback">
+            <input type="password" aria-describedby="password" class="form-control form-input" placeholder="" required>
+            <label class="form-label">password</label>
+            <label id="password" class="invalid-feedback">
+                Invalid password
+            </label>
+            <span class="glyphicon form-control-feedback"></span>
+        </div>
+    </form>
+    <div class="form-inline">
+        <div class="form-group pull-right">
+            <label class="loginPwReset">
+                <a href="{% url 'signup' %}">Register now</a>
+            </label>
+        </div>
+    </div>
+    <button id="submit" type="submit" class="btn btn-default submit" value="Login">Login</button>
+</div>
