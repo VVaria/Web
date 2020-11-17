@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from app.models import Question, Answer, Tag, Author
+from app.models import Question, Answer
 from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
 
 user_info = {
@@ -27,8 +27,6 @@ def pagination(object_list, request, per_page=10):
 def new_questions(request):
     return render(request, "hot_questions.html", {
         'questions': pagination(Question.objects.new().prefetch_related('likequestion_set'), request),
-        'tags': Tag.objects.popular_tags(),
-        'members': Author.objects.popular_users(),
         'user': user,
         'style': True,
         'type': 'new'
@@ -38,8 +36,6 @@ def new_questions(request):
 def hot_questions(request):
     return render(request, "hot_questions.html", {
         'questions': pagination(Question.objects.hot().prefetch_related('likequestion_set'), request),
-        'members': Author.objects.popular_users(),
-        'tags': Tag.objects.popular_tags(),
         'user': user,
         'style': True,
         'type': 'hot'
@@ -49,8 +45,6 @@ def hot_questions(request):
 def tag_questions(request, tag):
     return render(request, "hot_questions.html", {
         'questions': pagination(Question.objects.tag(tag), request),
-        'members': Author.objects.popular_users(),
-        'tags': Tag.objects.popular_tags(),
         'user': user,
         'style': True
     })
@@ -59,8 +53,6 @@ def tag_questions(request, tag):
 def author_questions(request, author):
     return render(request, "hot_questions.html", {
         'questions': pagination(Question.objects.author(author).prefetch_related('likequestion_set'), request),
-        'members': Author.objects.popular_users(),
-        'tags': Tag.objects.popular_tags(),
         'user': user,
         'style': True
     })
@@ -68,8 +60,6 @@ def author_questions(request, author):
 
 def add_question(request):
     return render(request, "add_question.html", {
-        'members': Author.objects.popular_users(),
-        'tags': Tag.objects.popular_tags(),
         'user': user
     })
 
@@ -77,8 +67,6 @@ def add_question(request):
 def question_answer(request, pk):
     return render(request, "question_answer.html", {
         'questions': Question.objects.one_question(pk),
-        'members': Author.objects.popular_users(),
-        'tags': Tag.objects.popular_tags(),
         'user': user,
         'style': False,
         'comments': pagination(Answer.objects.answers(pk), request, per_page=3)
@@ -87,8 +75,6 @@ def question_answer(request, pk):
 
 def settings_page(request):
     return render(request, "settings_page.html", {
-        'members': Author.objects.popular_users(),
-        'tags': Tag.objects.popular_tags(),
         'user': True,
         'user_info': user_info
     })
@@ -96,15 +82,11 @@ def settings_page(request):
 
 def login_page(request):
     return render(request, "login_page.html", {
-        'members': Author.objects.popular_users(),
-        'tags': Tag.objects.popular_tags(),
         'user': False
     })
 
 
 def signup_page(request):
     return render(request, "signup_page.html", {
-        'members': Author.objects.popular_users(),
-        'tags': Tag.objects.popular_tags(),
         'user': False
     })
