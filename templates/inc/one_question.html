@@ -34,7 +34,7 @@
                         <h4><a href="{% url 'question' pk=question.id %}">{{ question.title }}</a></h4>
                         <!-- Paragraph -->
                         {% if style == True %}
-                            <p class="overflow-hidden" style="max-height: 205px">{{ question.text | truncatewords_html:50 }}</p>
+                            <p class="overflow-hidden" style="max-height: 205px">{{ question.text | truncatewords:50 }}</p>
                         {% else %}
                             <p>{{ question.text }}</p>
                         {% endif %}
