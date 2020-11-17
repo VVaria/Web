@@ -66,7 +66,7 @@ class QuestionManager(models.Manager):
 class Question(models.Model):
     title = models.CharField(max_length=1024, verbose_name='Заголовок')
     text = models.TextField(verbose_name='Текст')
-    date = models.DateField(auto_now_add=True, verbose_name='Дата публикации')
+    date = models.DateTimeField(auto_now_add=True, verbose_name='Дата публикации')
     author = models.ForeignKey(Author, on_delete=models.CASCADE)
     tags = models.ManyToManyField(Tag, blank=True, verbose_name='Теги')
     rating = models.IntegerField(default=0, verbose_name='Рейтинг')

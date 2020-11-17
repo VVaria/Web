@@ -8,14 +8,14 @@
                     <!-- Logo -->
                     <div class="ui-logo">
                         <img src="{% static "/img/avatar.jpg" %}" width="100px" height="100px" alt=""
-                        class="img-responsive"/>
+                             class="img-responsive"/>
                     </div>
 
                     <div class="ui-content">
                         <div class="media-heading">
-                            <b class="author">{{question.author.name}}</b>
+                            <b class="author">{{ question.author.name }}</b>
                             <div class="metadata">
-                                <span class="date">{{question.date}}</span>
+                                <span class="date">{{ question.date }}</span>
                             </div>
                         </div>
                         <a href="#">
@@ -33,15 +33,15 @@
                         <!-- Heading -->
                         <h4><a href="{% url 'question' pk=question.id %}">{{ question.title }}</a></h4>
                         <!-- Paragraph -->
-                        {% if style == True%}
-                        {% if question.text|length > 100 %}
-                        <p class="overflow-hidden" style="max-height: 110px">{{ question.text }}</p>
-                        <a href="{% url 'question' pk=question.id %}">...<br></a>
+                        {% if style == True %}
+                            {% if question.text|length > 550 %}
+                                <p class="overflow-hidden" style="max-height: 205px">{{ question.text }}</p>
+                                <a href="{% url 'question' pk=question.id %}">...<br></a>
+                            {% else %}
+                                <p class="overflow-hidden" style="max-height: 205px">{{ question.text }}</p>
+                            {% endif %}
                         {% else %}
-                        <p class="overflow-hidden" style="max-height: 50px">{{ question.text }}</p>
-                        {% endif %}
-                        {% else %}
-                        <p>{{ question.text }}</p>
+                            <p>{{ question.text }}</p>
                         {% endif %}
                         <!-- Success -->
                         <div class="fixed-sticky">
@@ -50,9 +50,9 @@
                             </a>&nbsp;
                             <!-- Ends -->
                             <a>Tags:
-                                {%for tag in question.all_tags%}
-                                <a href="{% url 'tag' tag=tag %}">{{ tag }}</a>
-                                {%endfor%}
+                                {% for tag in question.all_tags %}
+                                    <a href="{% url 'tag' tag=tag %}">{{ tag }}</a>
+                                {% endfor %}
                             </a>
                         </div>
                     </div>

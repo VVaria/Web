@@ -75,7 +75,7 @@ class Command(BaseCommand):
         questions = (
             Question(
                 author_id=authors[i],
-                text='. '.join(f.sentences(f.random_int(min=2, max=10))),
+                text='. '.join(f.sentences(f.random_int(min=3, max=20))),
                 title=f.sentence()[:128],
                 date=f.date_time_this_month()
             )
