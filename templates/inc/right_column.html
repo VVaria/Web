@@ -17,7 +17,7 @@
     <legend>Best members</legend>
     <div class="column">
         {%for mem in members%}
-        <a class="h3" href="#">{{ mem }} <br></a>
+        <a class="h3" href="{% url 'author' author=mem.user.id %}">{{ mem.name }} <br></a>
         {%endfor%}
     </div>
 </div>

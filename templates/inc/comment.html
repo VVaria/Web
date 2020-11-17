@@ -10,12 +10,12 @@
                         alt="...">
                 </div>
             </div>
-            <div class="col-md-9 col-sm-9 col-xs-9 col-pad">
+            <div class="col-md-9 col-sm-9 col-xs-9">
                 <div class="media-body">
                     <div class="media-heading">
-                        <b class="author">{{comment.member}}</b>
-                        <div class="metadata">
-                            <span class="date">{{comment.time}}</span>
+                        <b class="author">{{comment.author.name}}</b>
+                        <div class="metadata text-secondary">
+                            <span class="date">{{comment.date}}</span>
                         </div>
                     </div>
                     <div class="media-text text-justify">{{comment.text}}</div>
@@ -23,7 +23,7 @@
                          <a class="vote plus mx-1" title="Нравится">
                             <i class="fa fa-thumbs-o-up text-success"></i>
                         </a>
-                        <span class="rating"> +1 </span>
+                        <span class="rating"> {{ comment.rating }} </span>
                         <a class="vote minus mx-1" title="Не нравится">
                             <i class="fa fa-thumbs-o-down text-danger"></i>
                         </a>

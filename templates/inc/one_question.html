@@ -1,7 +1,4 @@
 {% load static %}
-<link rel="shortcut icon" href="one-question.html#">
-<link href="{% static "/css/style-206.css" %}" rel="stylesheet">
-<link href="{% static "/font-awesome-4.7.0/css/font-awesome.min.css" %}" rel="stylesheet">
 
 <div class="ui-206">
     <div class="">
@@ -16,19 +13,18 @@
 
                     <div class="ui-content">
                         <div class="media-heading">
-                            <b class="author">{{question.member}}</b>
+                            <b class="author">{{question.author.name}}</b>
                             <div class="metadata">
-                                <span class="date">{{question.time}}</span>
+                                <span class="date">{{question.date}}</span>
                             </div>
                         </div>
                         <a href="#">
                             <i class="fa fa-thumbs-o-up text-success"></i>
                         </a>
-                        <b>5</b>&nbsp;
+                        <b>{{ question.rating }}</b>
                         <a href="#">
                             <i class="fa fa-thumbs-o-down text-danger"></i>
                         </a>
-                        <b>5</b>&nbsp;
                     </div>
                 </div>
                 <div class="col-md-9 col-sm-9 col-xs-9 col-pad">
@@ -50,11 +46,11 @@
                         <!-- Success -->
                         <div class="fixed-sticky">
                             <a href="{% url 'question' pk=question.id %}">
-                                answers(3)
+                                answers({{ question.answers_count }})
                             </a>&nbsp;
                             <!-- Ends -->
                             <a>Tags:
-                                {%for tag in question.tags%}
+                                {%for tag in question.all_tags%}
                                 <a href="{% url 'tag' tag=tag %}">{{ tag }}</a>
                                 {%endfor%}
                             </a>
