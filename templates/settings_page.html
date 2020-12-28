@@ -6,45 +6,7 @@
 
 <div class="ui-206">
     <div class="ui-outer">
-        <div class="form-group row">
-            <label for="inputLogin" class="col-sm-2 col-form-label">Login</label>
-            <div class="col-sm-10">
-                <input type="text" value="{{user_info.login}}" class="form-control" id="inputLogin">
-            </div>
-        </div>
-        <div class="form-group row">
-            <label for="inputEmail" class="col-sm-2 col-form-label">Email</label>
-            <div class="col-sm-10">
-                <input type="email" value="{{user_info.email}}" class="form-control" id="inputEmail">
-            </div>
-        </div>
-        <div class="form-group row">
-            <label for="inputNickname" class="col-sm-2 col-form-label">NickName</label>
-            <div class="col-sm-10">
-                <input type="text" value="{{user_info.nickname}}" class="form-control" id="inputNickname">
-            </div>
-        </div>
-
-        <div class="form-group row">
-            <label class="col-sm-2 form-label">Avatar</label>
-            <div class="col-sm-10">
-                <div class="custom-file mb-3">
-                    <div class="custom-file">
-                        <input type="file" class="custom-file-input" id="inputFile"
-                               aria-describedby="inputGroupFileAddon01">
-                        <label class="custom-file-label file-path validate" for="inputFile">Choose file</label>
-                    </div>
-                </div>
-                <img src="{% static "/img/avatar.jpg" %}" width="120px" height="120px" id="preview"
-                class="img-thumbnail">
-            </div>
-        </div>
-
-        <div class="add-ask-button">
-            <div class="nav-item ask action-buttons">
-                <a href="#" class="btn btn-primary sign-up-btn">Save changes</a>
-            </div>
-        </div>
+        {% include 'inc/form.html' with file=True %}
     </div>
 </div>
 {% endblock content%}

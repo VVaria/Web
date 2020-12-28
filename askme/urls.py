@@ -15,7 +15,8 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-
+from django.conf import settings
+from django.conf.urls.static import static
 from app import views
 
 urlpatterns = [
@@ -28,5 +29,8 @@ urlpatterns = [
     path('question/<int:pk>/', views.question_answer, name='question'),
     path('author/<int:author>/', views.author_questions, name='author'),
     path('ask/', views.add_question, name='ask'),
+    path('logout/', views.logout, name='logout'),
     path('', views.new_questions, name='new'),
 ]
+
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

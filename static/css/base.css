@@ -198,6 +198,10 @@ body {
     width: 40px;
     height: 40px;
 }
+
+textarea{
+	resize: none !important;
+}
 @media (max-width: 768px){
 	.navbar .dropdown-menu.action-form {
 		width: 100%;

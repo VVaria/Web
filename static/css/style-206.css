@@ -84,3 +84,7 @@ body{
 }
 /* Button */
 
+.ui-206 .ui-outer .form-control textarea{
+	height: 300px;
+	resize: none !important;
+}
