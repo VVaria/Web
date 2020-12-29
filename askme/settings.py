@@ -38,8 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'bootstrap_pagination',
-    'app',
-    'bootstrap4'
+    'app'
 ]
 
 MIDDLEWARE = [
@@ -127,7 +126,3 @@ STATICFILES_DIRS = [
     BASE_DIR / "static",
     '/var/www/static/',
 ]
-MEDIA_ROOT = BASE_DIR / 'uploads/'
-MEDIA_URL = '/uploads/'
-
-LOGIN_URL = '/login/'
